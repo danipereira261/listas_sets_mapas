@@ -41,12 +41,23 @@ public class Curso {
         return "[Curso: " + nome + ", tempo total: " + this.getTempoTotal() + "," + " aulas: " + this.aulas + "]";
     }
 
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, instrutor, aulas, alunos);
+    }
+
     public void matricula(Aluno aluno) {
         this.alunos.add(aluno);
     }
 
     public Set<Aluno> getAlunos(){
         return Collections.unmodifiableSet(alunos);
+    }
+
+    public boolean estaMatriculado(Aluno aluno) {
+        return this.alunos.contains(aluno);
     }
 }
 
